@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrigineEvenementRepository::class)]
+#[ORM\Table(name: "OrigineEvenement")]
 class OrigineEvenement
 {
     #[ORM\Id]
@@ -15,7 +16,7 @@ class OrigineEvenement
     #[ORM\Column(name: "idOrigineEvenement")]
     private ?int $idOrigineEvenement = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
     private ?string $nomOrigineEvenement = null;
 
     #[ORM\OneToMany(mappedBy: 'origineEvenement', targetEntity: FicheTechniqueVoiture::class)]

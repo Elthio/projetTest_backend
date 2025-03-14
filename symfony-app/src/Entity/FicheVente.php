@@ -19,8 +19,8 @@ class FicheVente
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateVente = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $prixVente = null;
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    private ?string $prixVente = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheVentes')]
     #[ORM\JoinColumn(name: "type_vente_id", referencedColumnName: "idTypesVentes")]
@@ -34,16 +34,16 @@ class FicheVente
     #[ORM\JoinColumn(name: "type_vehicule_id", referencedColumnName: "idTypeVehicule")]
     private ?TypeVehicule $typeVehicule = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $numeroDossierVente = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $intermediaireVente = null;
 
-    #[ORM\Column(length: 250, nullable: true)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $VendeurVN = null;
 
-    #[ORM\Column(length: 250, nullable: true)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $VendeurVO = null;
 
     #[ORM\OneToMany(mappedBy: 'ficheVente', targetEntity: FicheTechniqueVoiture::class)]
@@ -71,12 +71,12 @@ class FicheVente
         return $this;
     }
 
-    public function getPrixVente(): ?int
+    public function getPrixVente(): ?string
     {
         return $this->prixVente;
     }
 
-    public function setPrixVente(?int $prixVente): static
+    public function setPrixVente(?string $prixVente): static
     {
         $this->prixVente = $prixVente;
 

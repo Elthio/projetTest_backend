@@ -15,39 +15,43 @@ class Proprio
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
     private ?string $NumEtNomVoie = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 150, nullable: true)]
     private ?string $complementAdresse = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 20, nullable: true)]
     private ?string $telephoneDomicile = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 20, nullable: true)]
     private ?string $telephonePortable = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 20, nullable: true)]
     private ?string $telephoneJob = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 10)]
     private ?string $code_postal = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $ville = null;
 
     #[ORM\ManyToOne(inversedBy: 'proprios')]
     #[ORM\JoinColumn(name: "idLibelleCivilite", referencedColumnName: "idLibelleCivilite")]
     private ?LibelleCivilite $libelleCivilite = null;
+
+    #[ORM\ManyToOne(inversedBy: 'proprios')]
+    #[ORM\JoinColumn(name: "idTypeProspect", referencedColumnName: "idTypeProspect")]
+    private ?TypeProspect $typeProspect = null;
 
     #[ORM\OneToMany(mappedBy: 'proprio', targetEntity: Voiture::class)]
     private Collection $voitures;
@@ -190,6 +194,18 @@ class Proprio
     public function setLibelleCivilite(?LibelleCivilite $libelleCivilite): static
     {
         $this->libelleCivilite = $libelleCivilite;
+
+        return $this;
+    }
+
+    public function getTypeProspect(): ?TypeProspect
+    {
+        return $this->typeProspect;
+    }
+
+    public function setTypeProspect(?TypeProspect $typeProspect): static
+    {
+        $this->typeProspect = $typeProspect;
 
         return $this;
     }

@@ -11,10 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
 class CompteEvenement
 {
     #[ORM\Id]
-    #[ORM\Column(name: "idcompte_evenement", length: 250)]
+    #[ORM\Column(name: "idcompte_evenement", length: 100)]
     private ?string $idcompteEvenement = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
     private ?string $nomCompteEvenement = null;
 
     #[ORM\OneToMany(mappedBy: 'compteEvenement', targetEntity: FicheTechniqueVoiture::class)]

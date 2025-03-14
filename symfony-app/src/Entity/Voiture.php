@@ -12,16 +12,19 @@ use Doctrine\ORM\Mapping as ORM;
 class Voiture
 {
     #[ORM\Id]
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 20)]
     private ?string $immatriculation = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 17, unique: true, nullable: true)]
+    private ?string $vin = null;
+
+    #[ORM\Column(length: 100)]
     private ?string $marque = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $modele = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $versions = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -61,6 +64,18 @@ class Voiture
     public function setImmatriculation(string $immatriculation): static
     {
         $this->immatriculation = $immatriculation;
+
+        return $this;
+    }
+
+    public function getVin(): ?string
+    {
+        return $this->vin;
+    }
+
+    public function setVin(?string $vin): static
+    {
+        $this->vin = $vin;
 
         return $this;
     }

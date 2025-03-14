@@ -2,23 +2,23 @@
 
 namespace App\Entity;
 
-use App\Repository\LibelleCiviliteRepository;
+use App\Repository\TypeProspectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: LibelleCiviliteRepository::class)]
-class LibelleCivilite
+#[ORM\Entity(repositoryClass: TypeProspectRepository::class)]
+class TypeProspect
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name: "idLibelleCivilite")]
-    private ?int $idLibelleCivilite = null;
+    #[ORM\Column(name: "idTypeProspect")]
+    private ?int $idTypeProspect = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $nomLibelleCivilite = null;
+    private ?string $nomTypeProspect = null;
 
-    #[ORM\OneToMany(mappedBy: 'libelleCivilite', targetEntity: Proprio::class)]
+    #[ORM\OneToMany(mappedBy: 'typeProspect', targetEntity: Proprio::class)]
     private Collection $proprios;
 
     public function __construct()
@@ -26,19 +26,19 @@ class LibelleCivilite
         $this->proprios = new ArrayCollection();
     }
 
-    public function getIdLibelleCivilite(): ?int
+    public function getIdTypeProspect(): ?int
     {
-        return $this->idLibelleCivilite;
+        return $this->idTypeProspect;
     }
 
-    public function getNomLibelleCivilite(): ?string
+    public function getNomTypeProspect(): ?string
     {
-        return $this->nomLibelleCivilite;
+        return $this->nomTypeProspect;
     }
 
-    public function setNomLibelleCivilite(string $nomLibelleCivilite): static
+    public function setNomTypeProspect(string $nomTypeProspect): static
     {
-        $this->nomLibelleCivilite = $nomLibelleCivilite;
+        $this->nomTypeProspect = $nomTypeProspect;
 
         return $this;
     }
@@ -55,7 +55,7 @@ class LibelleCivilite
     {
         if (!$this->proprios->contains($proprio)) {
             $this->proprios->add($proprio);
-            $proprio->setLibelleCivilite($this);
+            $proprio->setTypeProspect($this);
         }
 
         return $this;
@@ -65,11 +65,11 @@ class LibelleCivilite
     {
         if ($this->proprios->removeElement($proprio)) {
             // set the owning side to null (unless already changed)
-            if ($proprio->getLibelleCivilite() === $this) {
-                $proprio->setLibelleCivilite(null);
+            if ($proprio->getTypeProspect() === $this) {
+                $proprio->setTypeProspect(null);
             }
         }
 
         return $this;
     }
-}
+} 
