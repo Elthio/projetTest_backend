@@ -15,38 +15,38 @@ class FicheTechniqueVoiture
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheTechniqueVoitures')]
-    #[ORM\JoinColumn(name: "voiture_immatriculation", referencedColumnName: "immatriculation")]
+    #[ORM\JoinColumn(name: "voiture_immatriculation", referencedColumnName: "immatriculation", nullable: true)]
     private ?Voiture $voiture = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheTechniqueVoitures')]
-    #[ORM\JoinColumn(name: "energie_id", referencedColumnName: "idenergie")]
+    #[ORM\JoinColumn(name: "energie_id", referencedColumnName: "idenergie", nullable: true)]
     private ?Energie $energie = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheTechniqueVoitures')]
-    #[ORM\JoinColumn(name: "type_vehicule_id", referencedColumnName: "idTypeVehicule")]
+    #[ORM\JoinColumn(name: "type_vehicule_id", referencedColumnName: "idTypeVehicule", nullable: true)]
     private ?TypeVehicule $typeVehicule = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheTechniqueVoitures')]
-    #[ORM\JoinColumn(name: "type_vente_id", referencedColumnName: "idTypesVentes")]
+    #[ORM\JoinColumn(name: "type_vente_id", referencedColumnName: "idTypesVentes", nullable: true)]
     private ?TypeVentes $typeVente = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheTechniqueVoitures')]
-    #[ORM\JoinColumn(name: "fiche_vente_id", referencedColumnName: "id")]
+    #[ORM\JoinColumn(nullable: true)]
     private ?FicheVente $ficheVente = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheTechniqueVoitures')]
-    #[ORM\JoinColumn(name: "compte_affaire_id", referencedColumnName: "idcompte_affaire")]
+    #[ORM\JoinColumn(name: "compte_affaire_id", referencedColumnName: "idcompte_affaire", nullable: true)]
     private ?CompteAffaire $compteAffaire = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheTechniqueVoitures')]
-    #[ORM\JoinColumn(name: "compte_evenement_id", referencedColumnName: "idcompte_evenement")]
+    #[ORM\JoinColumn(name: "compte_evenement_id", referencedColumnName: "idcompte_evenement", nullable: true)]
     private ?CompteEvenement $compteEvenement = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateEvenement = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheTechniqueVoitures')]
-    #[ORM\JoinColumn(name: "origine_evenement_id", referencedColumnName: "idOrigineEvenement")]
+    #[ORM\JoinColumn(name: "origine_evenement_id", referencedColumnName: "idOrigineEvenement", nullable: true)]
     private ?OrigineEvenement $origineEvenement = null;
 
     #[ORM\Column(length: 255, nullable: true)]
