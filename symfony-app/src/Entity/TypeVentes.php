@@ -11,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 class TypeVentes
 {
     #[ORM\Id]
-    #[ORM\Column]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(name: "idTypesVentes")]
     private ?int $idTypesVentes = null;
 
     #[ORM\Column(length: 255)]

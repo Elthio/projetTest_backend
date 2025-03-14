@@ -11,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Energie
 {
     #[ORM\Id]
-    #[ORM\Column]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(name: "idenergie")]
     private ?int $idenergie = null;
 
     #[ORM\Column(length: 255)]

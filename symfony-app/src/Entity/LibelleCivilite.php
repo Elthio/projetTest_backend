@@ -12,7 +12,7 @@ class LibelleCivilite
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name: "idLibelleCivilite")]
     private ?int $idLibelleCivilite = null;
 
     #[ORM\Column(length: 255)]

@@ -70,7 +70,6 @@ class CompteAffaire
     public function removeFicheTechniqueVoiture(FicheTechniqueVoiture $ficheTechniqueVoiture): static
     {
         if ($this->ficheTechniqueVoitures->removeElement($ficheTechniqueVoiture)) {
-            // set the owning side to null (unless already changed)
             if ($ficheTechniqueVoiture->getCompteAffaire() === $this) {
                 $ficheTechniqueVoiture->setCompteAffaire(null);
             }
