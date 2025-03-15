@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Importation de données Excel{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Importation de données Excel</h2>
+                </div>
+                <div class="card-body">
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    
+                    <p class="lead">Sélectionnez un fichier Excel (.xlsx ou .xls) contenant les données à importer.</p>
+                    
+                    <form action="{{ path('app_import_excel') }}" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="excel_file" class="form-label">Fichier Excel</label>
+                            <input type="file" class="form-control" id="excel_file" name="excel_file" required>
+                            <div class="form-text">Le fichier doit être au format Excel (.xlsx ou .xls).</div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <h5>Instructions :</h5>
+                            <ul>
+                                <li>La première ligne du fichier doit contenir les en-têtes des colonnes.</li>
+                                <li>Les colonnes doivent correspondre aux champs de la base de données.</li>
+                                <li>L'importation peut prendre plusieurs minutes selon la taille du fichier.</li>
+                            </ul>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Importer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
